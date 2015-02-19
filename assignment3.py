@@ -29,7 +29,6 @@ def main():
 
         for row in dictionary:
             result = {'path':row[0], 'date':row[1], 'browser': row[2], 'status': row[3], 'size': row[4]}
-            browser = browser
             
             date = datetime.datetime.strptime(result['date'], dateFormat)
             counter = times[date.hour] + 1
@@ -40,20 +39,19 @@ def main():
                 imgHits += 1
 
             
-            if re.search('chrome', browser, re.I ): 
+            if re.search("chrome/\d+", result['browser'], re.I ): 
                 chrome += 1
 
-            if re.search('safari', browser, re.I) and not re.search("chrome/\d+", browser, re.I): 
+            if re.search('safari', result['browser'], re.I) and not re.search("chrome/\d+", result['browser'], re.I): 
                 safari += 1
 
-            if re.search('firefox', browser, re.I): 
+            if re.search('firefox', result['browser'], re.I): 
                 firefox += 1
 
-            if re.search("msie", browser, re.I): 
+            if re.search("msie", result['browser'], re.I): 
                 msie += 1
 
         tempTimes = times
-        sortedTimes = {}
 
         # pop max keys and print 0 key vals in order
         for i in range(0, 24):
