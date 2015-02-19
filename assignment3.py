@@ -64,7 +64,7 @@ def main():
 
         imageRequest = (imgHits/hits)*100
         browsers = {'Safari': safari, 'Chrome':chrome, 'Firefox': firefox, 'MSIE':msie}
-        print browsers
+        # print browsers
         print "Image requests account for {0:0.1f} of all requests".format(imageRequest)
         print "The most popular browser today is %s" % (max(browsers.iteritems(), key=operator.itemgetter(1))[0])
 
